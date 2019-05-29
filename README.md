@@ -171,5 +171,34 @@ gcc-multilib gcc-multilib是Debian的64位系统下运行32位程序的一个库
 ```shell
 sudo apt-get install gcc-multilib 
 ```
+# 0x5 二进制分析工具
+## angr
+10月10日angr更新后的安装。
+预备环境：
+```
+sudo apt-get install python3-dev libffi-dev build-essential virtualenvwrapper
+```
 
+angr迁移到python3，手动下载后按照官网的顺序进行安装，顺序：
+```
+archinfo
 
+pyvex
+
+claripy
+
+cle
+
+angr
+
+```
+
+创建虚拟环境：
+```
+mkvirtualenv --python=$(which python3) angr
+```
+
+跳转到下载的目录下依次安装：
+```
+pip3 install -e .
+```
