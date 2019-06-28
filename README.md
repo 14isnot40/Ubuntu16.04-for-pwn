@@ -1,5 +1,5 @@
 # Ubuntu 16.04 PWN 环境配置
-[TOC]
+[toc]
 # 0x1 基本环境
 ## 换源
 推荐阿里云和清华源。修改/etc/apt/sources.list；ubuntu16.04中自带源的备份了，换完后就可以愉快地更新一波了。
@@ -107,8 +107,8 @@ python-devel是python的一个开发包，包括了一些用C/Java/C#等编写�
 apt-get install python-dev
 ```
 ---
-## gdb + peda + pwndbg
-unix平台调试器，到官方下载到最新版并安装，注意新建一个空文件夹进行操作(http://www.linuxfromscratch.org/blfs/view/cvs/general/gdb.html)
+## gdb + peda + pwndbg + gef
+gdbs是unix平台调试器，到官方下载到最新版并安装，注意新建一个空文件夹进行操作(http://www.linuxfromscratch.org/blfs/view/cvs/general/gdb.html)
 ```shell
 ./configure --prefix=/usr \
             --with-system-readline \
@@ -131,6 +131,24 @@ WARNING: 'makeinfo' is missing on your system.
 Makefile:486: recipe for target 'gdb.info' failed
 #解决
 apt-get install texinfo
+```
+
+peda安装
+```shell
+git clone https://github.com/longld/peda.git ~/peda
+echo "source ~/peda/peda.py" >> ~/.gdbinit
+```
+
+gef安装
+```shell
+via the install script
+#下载 `gef.sh` 并执行
+wget -q -O- https://github.com/hugsy/gef/raw/master/gef.sh | sh
+
+# manually
+# 下载 `gef.py`, 并将其 `source` 写入 `.gdbinit`
+wget -q -O ~/.gdbinit-gef.py https://github.com/hugsy/gef/raw/master/gef.py
+echo source ~/.gdbinit-gef.py >> ~/.gdbinit
 ```
 
 ---
